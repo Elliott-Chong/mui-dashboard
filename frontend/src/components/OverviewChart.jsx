@@ -14,7 +14,6 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       return data;
     },
   });
-  if (!sales) return;
   console.log("🚀 ~ file: OverviewChart.jsx:16 ~ OverviewChart ~ sales", sales);
   const [totalSalesLine, totalUnitsLine] = React.useMemo(() => {
     if (!sales) return [];
@@ -49,6 +48,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
     return [[totalSalesLine], [totalUnitsLine]];
   }, [sales]);
 
+  if (!sales) return;
   return (
     <ResponsiveLine
       data={view === "sales" ? totalSalesLine : totalUnitsLine}
